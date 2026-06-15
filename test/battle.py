@@ -1,24 +1,22 @@
-from ex0.factory import FlameFactory, AquaFactory
+from ex0.factory import CreatureFactory, FlameFactory, AquaFactory
 
+
+def test_factory(factory: CreatureFactory):
+    print("Testing factory")
+    base = factory.create_base()
+    print(base.describe())
+    print(base.attack())
+    evolved = factory.create_evolved()
+    print(evolved.describe())
+    print(evolved.attack())
+    print()
 
 def main() -> None:
-    print("Testing factory")
     factory = FlameFactory()
-    base = factory.create_base()
-    print(base.describe())
-    print(base.attack())
-    evolved = factory.create_evolved()
-    print(evolved.describe())
-    print(evolved.attack())
+    test_factory(factory)
 
-    print("\nTesting Factory")
     factory = AquaFactory()
-    base = factory.create_base()
-    print(base.describe())
-    print(base.attack())
-    evolved = factory.create_evolved()
-    print(evolved.describe())
-    print(evolved.attack())
+    test_factory(factory)
 
 
 if __name__ == "__main__":
