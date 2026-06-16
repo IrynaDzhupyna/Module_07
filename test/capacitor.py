@@ -3,23 +3,34 @@ from ex0 import CreatureFactory
 
 
 
-def test_factory(factory: CreatureFactory, message) -> None:
-    print(message)
-    print(" base:")
+def test_factory(factory: CreatureFactory, c_type: str) -> None:
+    print(f"Testing Creture with {c_type} capability")
     base = factory.create_base()
-    print(base.describe())
-    print(base.attack())
-    print(base.heal())
-    print(" evolved:")
     evolved = factory.create_evolved()
-    print(evolved.describe())
-    print(evolved.attack())
-    print()
+    stage: list = [base, evolved]
+
+    for element in stage:
+        if element == base:
+            print(" base:")
+        elif element == evolved:
+            print(" evolved:")
+        print(element.describe())
+        print(element.attack())
+        
+        if c_type == "healing":
+            print(element.heal())
+        elif c_type == "transform":
+            print(element.transform())
+            print(element.attack())
+            print(element.revert())
 
 
 def main() -> None:
     heal_factory = HealingCreatureFactory()
-    test_factory(heal_factory, "Testing Creature with healing capability")
+    test_factory(heal_factory, "healing")
+    print()
+    transform = TransformCreatureFactory()
+    test_factory(transform, "transform")
 
 
 if __name__ == "__main__":

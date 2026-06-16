@@ -6,7 +6,7 @@ class Sproutling(Creature, HealCapability):
     def __init__(self) -> None:
         super().__init__(name="Sproutling", c_type="Grass")
 
-    def heal(self, target) -> str:
+    def heal(self) -> str:
         return f"{self.name} heals itself for a small amount"
     
     def attack(self) -> str:
@@ -17,7 +17,7 @@ class Bloomelle(Creature, HealCapability):
     def __init__(self) -> None:
         super().__init__(name="Boomelle", c_type="Grass/Fairy")
 
-    def heal(self, target) -> str:
+    def heal(self) -> str:
         return f"{self.name} heals itself and others for a large amount"
     
     def attack(self) -> str:
