@@ -1,13 +1,15 @@
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex0 import CreatureFactory
+from ex1.capability import HealCapability, TransformCapability
+from ex0.creature import Creature
 
 
 
 def test_factory(factory: CreatureFactory, c_type: str) -> None:
-    print(f"Testing Creture with {c_type} capability")
+    print(f"Testing Creature with {c_type} capability")
     base = factory.create_base()
     evolved = factory.create_evolved()
-    stage: list = [base, evolved]
+    stage: list[Creature] = [base, evolved]
 
     for element in stage:
         if element == base:
@@ -17,9 +19,9 @@ def test_factory(factory: CreatureFactory, c_type: str) -> None:
         print(element.describe())
         print(element.attack())
         
-        if c_type == "healing":
+        if isinstance(element, HealCapability):
             print(element.heal())
-        elif c_type == "transform":
+        elif isinstance(element, TransformCapability):
             print(element.transform())
             print(element.attack())
             print(element.revert())

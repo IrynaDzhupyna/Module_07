@@ -15,7 +15,7 @@ class Sproutling(Creature, HealCapability):
 
 class Bloomelle(Creature, HealCapability):
     def __init__(self) -> None:
-        super().__init__(name="Boomelle", c_type="Grass/Fairy")
+        super().__init__(name="Bloomelle", c_type="Grass/Fairy")
 
     def heal(self) -> str:
         return f"{self.name} heals itself and others for a large amount"
@@ -27,31 +27,33 @@ class Bloomelle(Creature, HealCapability):
 class Shiftling(Creature, TransformCapability):
     def __init__(self) -> None:
         super().__init__(name="Shiftling", c_type="Normal")
-        self.transformed = False
+        self.transformed: bool = False
     
     def transform(self) -> str:
         self.transformed = True
         return f"{self.name} shifts into a sharper form!"
 
     def revert(self) -> str:
+        self.transformed = False
         return f"{self.name} returns to normal."
     
     def attack(self) -> str:
         if self.transformed:
-            return f"{self.name} performes a boosted strike!"
+            return f"{self.name} performs a boosted strike!"
         return f"{self.name} attacks normally."
 
 
 class Morphagon(Creature, TransformCapability):
     def __init__(self) -> None:
         super().__init__(name="Morphagon", c_type="Normal/Dragon")
-        self.transformed = False
+        self.transformed: bool = False
 
     def transform(self) -> str:
         self.transformed = True
         return f"{self.name} morphs into a dragonic battle form!"
 
     def revert(self) -> str:
+        self.transformed = False
         return f"{self.name} stabilizes its form."
     
     def attack(self) -> str:
