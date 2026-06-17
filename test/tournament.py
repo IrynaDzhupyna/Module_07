@@ -1,6 +1,7 @@
 from ex0 import CreatureFactory, FlameFactory, AquaFactory
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex2 import NormalStrategy, AggressiveStrategy, DefensiveStrategy
+from ex2 import BattleError
 
 
 def battle(opponents: list[tuple]) -> None:
@@ -16,12 +17,12 @@ def battle(opponents: list[tuple]) -> None:
             print("* Battle *")
             print(f"{creature_1.describe()}\n vs\n{creature_2.describe()}")
             print(" now fight!")
-
-            if strategy_1.is_valid(creature_1) and strategy_2.is_valid(creature_2):
-                print(creature_1.attack())
-                print(creature_2.attack())
-            else:
-                print("Battle error, aborting tournament: Invalid Creature '{creature.name}' for this aggresive strategy")
+            
+            try:
+                creature_1.act()
+                creature_2.act()
+            except BattleError as e:
+                raise BattleError (f"Battle error, aborting tournament: {e}")
 
 
 def main() -> None:
