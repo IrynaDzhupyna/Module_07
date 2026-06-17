@@ -6,7 +6,7 @@ from .exceptions import BattleError
 
 class BattleStrategy(ABC):
     @abstractmethod
-    def act(self, creature: Creature) -> str:
+    def act(self, creature: Creature) -> None:
         pass
 
     @abstractmethod
@@ -18,7 +18,7 @@ class NormalStrategy(BattleStrategy):
     '''
     any creature
     '''
-    def act(self, creature: Creature) -> str:
+    def act(self, creature: Creature) -> None:
         print(creature.attack())
 
     def is_valid(self, creature: Creature) -> bool:
@@ -28,9 +28,9 @@ class NormalStrategy(BattleStrategy):
 class AggressiveStrategy(BattleStrategy):
     ''' with transform capabilities
     '''
-    def act(self, creature: Creature) -> str:
+    def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise BattleError
+            raise BattleError (f"Invalid Creature '{creature.name}' for this aggressive strategy")
         print(creature.transform())
         print(creature.attack())
         print(creature.revert())
@@ -46,7 +46,7 @@ class DefensiveStrategy(BattleStrategy):
     '''
     healing capability
     '''
-    def act(self, creature: Creature) -> str:
+    def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
             raise BattleError
         print(creature.attack())
