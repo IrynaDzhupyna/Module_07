@@ -25,19 +25,26 @@ def battle(opponents: list[tuple]) -> None:
 
 
 def main() -> None:
-    """
     print("Tournament 0 (basic)")
-    opponents = [
+    opponents_1 = [
         (FlameFactory(), NormalStrategy()),
         (HealingCreatureFactory(), DefensiveStrategy())]
-    battle(opponents)"""
+    battle(opponents_1)
 
     print("Tournament 1 (error)")
-    opponents = [
+    opponents_2 = [
         (FlameFactory(), AggressiveStrategy()),
         (HealingCreatureFactory(), DefensiveStrategy())
     ]
-    battle(opponents)
+    battle(opponents_2)
+
+    print("Tournament 2 (multiple)")
+    opponents_3 = [
+        (AquaFactory(), NormalStrategy()),
+        (HealingCreatureFactory(), DefensiveStrategy()),
+        (TransformCreatureFactory(), AggressiveStrategy())
+    ]
+    battle(opponents_3)
 
 
 

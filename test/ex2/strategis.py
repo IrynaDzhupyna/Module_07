@@ -19,7 +19,7 @@ class NormalStrategy(BattleStrategy):
     any creature
     '''
     def act(self, creature: Creature) -> str:
-        creature.attack()
+        print(creature.attack())
 
     def is_valid(self, creature: Creature) -> bool:
         return True
