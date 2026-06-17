@@ -1,1 +1,2 @@
-from .strategis import NormalStrategy, AggresiveStrategy, DefensiveStrategy
+from .strategis import NormalStrategy, AggressiveStrategy, DefensiveStrategy
+from .exceptions import BattleError
