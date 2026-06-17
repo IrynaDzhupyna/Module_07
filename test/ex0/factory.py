@@ -18,7 +18,7 @@ class FlameFactory(CreatureFactory):
 
     def create_evolved(self) -> Creature:
         return Pyrodon()
-    
+
 
 class AquaFactory(CreatureFactory):
     def create_base(self) -> Creature:

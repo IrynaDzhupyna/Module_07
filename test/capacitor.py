@@ -4,7 +4,6 @@ from ex1.capability import HealCapability, TransformCapability
 from ex0.creature import Creature
 
 
-
 def test_factory(factory: CreatureFactory, c_type: str) -> None:
     print(f"Testing Creature with {c_type} capability")
     base = factory.create_base()
@@ -18,7 +17,7 @@ def test_factory(factory: CreatureFactory, c_type: str) -> None:
             print(" evolved:")
         print(element.describe())
         print(element.attack())
-        
+
         if isinstance(element, HealCapability):
             print(element.heal())
         elif isinstance(element, TransformCapability):

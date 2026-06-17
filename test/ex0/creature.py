@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class Creature(ABC):
     def __init__(self, name=None, c_type=None) -> None:
         self.name = name
@@ -11,7 +12,7 @@ class Creature(ABC):
 
     def describe(self) -> str:
         return f"{self.name} is a {self.c_type} type Creature"
-    
+
 
 class Flameling(Creature):
     def __init__(self) -> None:
@@ -19,7 +20,7 @@ class Flameling(Creature):
 
     def attack(self) -> str:
         return f"{self.name} uses Ember!"
-    
+
 
 class Pyrodon(Creature):
     def __init__(self) -> None:
@@ -27,7 +28,7 @@ class Pyrodon(Creature):
 
     def attack(self) -> str:
         return f"{self.name} uses Flamethrower!"
-    
+
 
 class Aquabub(Creature):
     def __init__(self) -> None:
@@ -35,7 +36,7 @@ class Aquabub(Creature):
 
     def attack(self) -> str:
         return f"{self.name} uses Water Gun!"
-    
+
 
 class Torragon(Creature):
     def __init__(self) -> None:

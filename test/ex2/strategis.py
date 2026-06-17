@@ -15,9 +15,6 @@ class BattleStrategy(ABC):
 
 
 class NormalStrategy(BattleStrategy):
-    '''
-    any creature
-    '''
     def act(self, creature: Creature) -> None:
         print(creature.attack())
 
@@ -26,11 +23,10 @@ class NormalStrategy(BattleStrategy):
 
 
 class AggressiveStrategy(BattleStrategy):
-    ''' with transform capabilities
-    '''
     def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise BattleError(f"Invalid Creature '{creature.name}' for this aggressive strategy")
+            raise BattleError(f"Invalid Creature '{creature.name}'"
+                              " for this aggressive strategy")
         print(creature.transform())
         print(creature.attack())
         print(creature.revert())
@@ -38,17 +34,15 @@ class AggressiveStrategy(BattleStrategy):
     def is_valid(self, creature: Creature) -> bool:
         if isinstance(creature, TransformCapability):
             return True
-        
+
         return False
-    
+
 
 class DefensiveStrategy(BattleStrategy):
-    '''
-    healing capability
-    '''
     def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise BattleError(f"Invalid Creature '{creature.name}' for this aggressive strategy")
+            raise BattleError(f"Invalid Creature '{creature.name}'"
+                              " for this aggressive strategy")
         print(creature.attack())
         print(creature.heal())
 
