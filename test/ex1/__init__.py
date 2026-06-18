@@ -1,1 +1,4 @@
-import factory  # noqa: F401
+from .factory import ( # noqa: F401
+HealingCreatureFactory,
+TransformCreatureFactory
+)
